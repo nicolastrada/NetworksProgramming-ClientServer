@@ -46,7 +46,10 @@ class Server:
         self.port = 10000
         self.address = 'localhost'
         self.socket = sk.socket(sk.AF_INET, sk.SOCK_DGRAM)
-        self.buffer = 9216 #Buffer of 9216 byte
+        # Buffer of 9216 byte
+        # Buffer size set to 9216 byte, this size can cause errors (Message Too Long) on a MacOS device. 
+        # In this case you have to simply reduce the Buffer size (Ex 4096).
+        self.buffer = 9216
         self.sleep_time = 0.05
         
     # Check the directory of the Server: if it's not present, will be create a default folder.
